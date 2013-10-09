@@ -15,9 +15,17 @@
 //
 // Last tested in Visual C++ 2010 Express 
 
-//#include "stdafx.h"
-#include <stdlib.h>
-#include <GLUT/glut.h>
+
+
+#ifdef __APPLE__
+#    include <GLUT/glut.h>
+#    include <OpenGL/OpenGL.h>
+#elif defined _WIN32 || defined _WIN64
+#    include <GL\glut.h>
+#	 include "stdafx.h"
+#elif __gnu_linux__
+#    include <GL\glut.h>
+#endif
 #include <math.h>
 #include <stdio.h>
 #include "drawT.h"
@@ -26,16 +34,13 @@
 //======================================================
 // GLOBAL VARIABLES 
 //======================================================
-static double theta_stop1 = 270;
 float pitch = 0.0f;
 float yaw = 0.0f;
 float pitch0, yaw0;
 bool MousePressed;
 int mouseX0, mouseY0;
 bool rotating=false;
-double counterTM=0.0;
-double counterTMF=0.0;
-double counterT = 0.0;
+double counter=0.0;
 
 
 //======================================================
@@ -170,6 +175,7 @@ void mouseClickCallBack(int button, int state, int x, int y) {
     switch (state)
     {
 		case GLUT_DOWN:
+			printf("what the fuck is happening");
 			MousePressed = true;
 			rotateView(false);
 			pitch0 = pitch; yaw0 = yaw;
@@ -218,12 +224,6 @@ void keyboardCallBack(unsigned char key, int x, int y) {
 	case 'l': case 'L':
 		glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 	break;
-	case 'i': case 'I':
-		theta_stop1+=10;
-	break;
-	case 'd': case 'D':
-		theta_stop1-=10;
-	break;
 	case 'r': 
 		rotating= !rotating;
 		rotateView(rotating);
@@ -239,58 +239,55 @@ void keyboardCallBack(unsigned char key, int x, int y) {
 }
 
 
-void draw3DT()
+void draw3DT(double counter)
 {
-counterT = counterT+ 0.001;
 
-glPushMatrix();
+	glPushMatrix();
 
-	glRotatef(sin(counterT)*10,0,1.0,0);	
-	glTranslatef(-1.75,0,0);
+		glTranslatef(0,0,0);
+		//glRotatef(sin(counter)*10,0,1.0,0);	
 
-	drawT();
-glPopMatrix();
+		drawT();
+	glPopMatrix();
 }
 
-void draw3DTM()
+void draw3DTM(double counter)
 {
-counterTM = counterTM + 0.001;
-	
-		
-		draw3DT();
+		glRotatef(sin(counter)*10, 0.0, 1.0, 0.0);
 
 		glPushMatrix();
-		
 			glPushMatrix();
-				glRotatef(sin(counterTM)*20,0,1.0,0);
-				glTranslatef(0,0,0);
-				//glScalef(4,0.5,0.5);
+				glTranslatef(3.25,0,0);
+				glRotatef(sin(counter)*20,0,2.0,0);
 				drawM();
 			glPopMatrix();
-			
-		glPopMatrix();
+		//add any current transformations to the matrix		
 		
+			glPushMatrix();	
+				draw3DT(counter);
+			glPopMatrix();
+		glPopMatrix();
+
+
 }
 
-void draw3DTMF()
+void draw3DTMF(double counter)
 {
-counterTMF = counterTMF + 0.001;
 	
-		
-		
-		draw3DTM();
-
-		glPushMatrix();
-		
-			glPushMatrix();
-			
-				glRotatef(sin(counterTMF)*30,0,1.0,0);
-				glTranslatef(3,0,0);
-				//glScalef(4,0.5,0.5);
-				drawF();
-			glPopMatrix();
-			
+	glTranslatef(-3,0,0);
+	glPushMatrix();
+		glRotatef(sin(counter)*20, 0.0, 1.0, 0.0);
+		glPushMatrix();	
+			glTranslatef(6.25,0,0);
+			glRotatef(sin(counter)*30, 0.0, 1.0, 0.0);				
+			drawF();
 		glPopMatrix();
+		
+	glPopMatrix();
+	glPushMatrix();
+		draw3DTM(counter);
+		
+	glPopMatrix();
 		
 }
 
@@ -301,42 +298,12 @@ counterTMF = counterTMF + 0.001;
 void drawScene(int t)
 {
 
-	//counter = counter + 0.001;
 	
-	//glPushMatrix();
-	//	glRotatef(sin(counter)*10,0,1.0,0);
-	//
-	//	glPushMatrix();
-	//		glTranslatef(-1.75,0,0);
-	//		//glScalef(4,0.5,0.5);
-	//	
-	//		drawT();
-	//	glPopMatrix();
-	//	
-	//	glPushMatrix();
-	//	glRotatef(sin(counter)*20,0,1.0,0);
-	//	
-	//		glPushMatrix();
-	//			glTranslatef(0,0,0);
-	//			//glScalef(4,0.5,0.5);
-	//			drawM();
-	//		glPopMatrix();
-	//
-	//		glPushMatrix();
-	//			glTranslatef(3,0,0);
-	//			glRotatef(sin(counter)*50,0,1.0,0);
-	//			//glScalef(4,0.5,0.5);
-	//	
-	//			drawF();
-	//		glPopMatrix();
-	//	glPopMatrix();
-		
-	//glPopMatrix();
-	draw3DTMF();
-	
+	draw3DTMF(counter);
+	counter = counter + 0.001;
 	glutPostRedisplay();
 
-	glutTimerFunc(10, drawScene, 0);
+	//glutTimerFunc(1000, drawScene, 0);
 }
 
 
@@ -368,15 +335,16 @@ int main(int argc, char** argv)
 	// Create and name window
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH); // Need both double buffering and z buffer
     glutInitWindowSize(800, 500);
-    glutCreateWindow("Example 8.1 - 3D Curve Example");
+    glutCreateWindow("TMF Fishtail");
 
 	// Add Display & Mouse CallBacks
 	glutReshapeFunc(reshapeCallBack);
-	glutDisplayFunc(displayCallBack);
 	glutIdleFunc(NULL); // Starts the Idle Function as having no routine attached to it. This is modified in rotateView()
 	glutMouseFunc(mouseClickCallBack);
     glutMotionFunc(mouseMotionCallBack);
 	glutKeyboardFunc(keyboardCallBack);
+	glutDisplayFunc(displayCallBack);
+
 
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glColor3f(1.0, 0.0, 0.0);

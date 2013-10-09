@@ -20,12 +20,13 @@
 
 
 void drawT() {
+	glPushMatrix();
+	glTranslatef(1.5,0,0);
 	//Draw top cube
 	glPushMatrix();
 		glTranslatef(0,1.25,0);
 		//glRotatef(0,0,0);
 		glScalef(3,0.5,0.5);
-		printf("Drawn1");
 		draw3DCube();
 	glPopMatrix();
 	//Draw bottom cube
@@ -33,8 +34,8 @@ void drawT() {
 		glTranslatef(0,0,0);
 		//glRotatef(1,90,0,0);
 		glScalef(0.5,3,0.5);
-		printf("Drawn2");
 		draw3DCube();
+	glPopMatrix();
 	glPopMatrix();
 }
 

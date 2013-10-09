@@ -1,8 +1,6 @@
-// Example_8_1.cpp : Rotating Wire-Frame 3D Curve
 //
-// Author  : Mike Chantler
+// Author  : Thomas Frow
 // Date    : 29/04/2008
-// Version : 1.1 - Commenting changed to match other examples style
 //
 // Program behaviour:
 // Mouse Button & Drag - Changes the View Point.
@@ -138,6 +136,8 @@ void drawAxesAndGridLines(bool x_y_display, bool y_z_display,  bool x_z_display)
 
 }
 
+
+
 //======================================================
 // VIEW CONTROL ROUTINES
 //======================================================
@@ -228,6 +228,9 @@ void keyboardCallBack(unsigned char key, int x, int y) {
 	case 'R':
         resetView();
 	break;
+	case 't':
+		drawT();
+	break;
 	default:
 		printf("Press b - back fill; f - front fill; l - line; i - increment; or d - decrement; r - rotate; R - reset view\n");
 	}
@@ -235,11 +238,10 @@ void keyboardCallBack(unsigned char key, int x, int y) {
 	glutPostRedisplay();
 }
 
-//======================================================
-// DISPLAY CALL BACK ROUTINE 
-//======================================================
-void displayCallBack()	
+
+void drawScene()
 {
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	executeViewControl (yaw, pitch);
@@ -268,8 +270,19 @@ void displayCallBack()
 		
 		drawF();
 	glPopMatrix();
-			
 
+}
+
+
+//======================================================
+// DISPLAY CALL BACK ROUTINE 
+//======================================================
+void displayCallBack()	
+{
+
+			
+	drawScene();
+	
 	glutSwapBuffers();
 }
 
@@ -314,4 +327,6 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+
+
 

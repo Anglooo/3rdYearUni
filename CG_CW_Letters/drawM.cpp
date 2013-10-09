@@ -20,6 +20,9 @@
 
 void drawM() {
 
+glPushMatrix();
+
+glTranslatef(1.25,0,0);
 	//Draw left vertical of M.
 	glPushMatrix();
 		glTranslatef(-1.25,0,0);
@@ -50,5 +53,6 @@ void drawM() {
 		draw3DCube();
 	glPopMatrix();
 	
+glPopMatrix();
 	
 }
