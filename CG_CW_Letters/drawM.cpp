@@ -7,15 +7,20 @@
 //
 ////////////////////////////////////////////////////////////////
 
-//#include "stdafx.h" //Only required for windows
-#include <stdlib.h>
+#ifdef __APPLE__
+#    include <GLUT/glut.h>
+#    include <OpenGL/OpenGL.h>
+#elif defined _WIN32 || defined _WIN64
+#    include <GL/glut.h>
+#	 include "stdafx.h"
+#elif __unix__
+#    include <GL/glut.h>
+#endif
 
-//#include <GL/glut.h> //required for linux/Windows
 #include <math.h>
 #include <stdio.h>
-#include <OpenGL/gl.h>
-#include <GLUT/GLUT.h>//only required for mac
 #include "cube.h"
+#include "drawM.h"
 
 
 void drawM() {

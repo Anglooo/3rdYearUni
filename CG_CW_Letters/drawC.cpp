@@ -7,12 +7,20 @@
 //
 ////////////////////////////////////////////////////////////////
 
-//#include "stdafx.h" //Only required for windows
-#include <stdlib.h>
-#include <GL/glut.h>
+#ifdef __APPLE__
+#    include <GLUT/glut.h>
+#    include <OpenGL/OpenGL.h>
+#elif defined _WIN32 || defined _WIN64
+#    include <GL/glut.h>
+#	 include "stdafx.h"
+#elif __gnu_linux__
+#    include <GL/glut.h>
+#endif
+
 #include <math.h>
 #include <stdio.h>
-#include "3DCurve.h"
+#include "cube.h"
+#include "drawC.h"
 
 
 void drawC() 
