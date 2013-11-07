@@ -1,3 +1,4 @@
+//////////////////////////////////////////////////
 // Author  : Thomas Frow
 // Date    : 29/04/2008
 //
@@ -11,10 +12,7 @@
 // Key "r" - Automated Rotation
 // Key "R" - Reset the View
 //
-// Callback commentary sent to normal command window.
-//
-// Last tested in Visual C++ 2010 Express 
-
+/////////////////////////////////////////////////////
 
 
 #ifdef __APPLE__

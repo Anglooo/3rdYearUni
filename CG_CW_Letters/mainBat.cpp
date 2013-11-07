@@ -135,12 +135,6 @@ void keyboardCallBack(unsigned char key, int x, int y) {
 	case 'l': case 'L':
 		glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 	break;
-	case 'i': case 'I':
-		//theta_stop1+=10;
-	break;
-	case 'd': case 'D':
-		//theta_stop1-=10;
-	break;
 	case 'r': 
 		rotating= !rotating;
 		rotateView(rotating);
