@@ -1,11 +1,11 @@
 ////////////////////////////////////////////////////////////////
 //
-// drawF.cpp To draw an F
+// drawF.cpp To draw an Animal
 // 
 // Author: Thomas Frow
 // Date:   25/09/2013
 //
-////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
 #ifdef __APPLE__
 #    include <GLUT/glut.h>
@@ -22,28 +22,6 @@
 #include "cube.h"
 
 
-void drawF() {
+void drawAnimal() {
 
-	//Draw top 'arm' of F
-	glPushMatrix();
-		glTranslatef(0.75,1.25,0);
-		//glRotatef(0,0,0);
-		glScalef(2,0.5,0.5);
-		draw3DCube();
-	glPopMatrix();
-	//Draw bottom 'arm' of F
-	glPushMatrix();
-		glTranslatef(0.75,0,0);
-		//glRotatef(0,0,0);
-		glScalef(2,0.5,0.5);
-		draw3DCube();
-	glPopMatrix();
-	//Draw bottom cube
-	glPushMatrix();
-		glTranslatef(0.00,0,0);
-		//glRotatef(1,90,0,0);
-		glScalef(0.5,3,0.5);
-		draw3DCube();
-	glPopMatrix();
-	
 }

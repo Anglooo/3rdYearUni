@@ -4,7 +4,11 @@ clear
 
 echo "compile time"
 
-gcc ./drawD.cpp ./drawT.cpp ./drawM.cpp ./drawMM.cpp ./drawF.cpp ./drawC.cpp ./cube.cpp ./driverFish.cpp  -o Fish -lGLU -lglut -lGL -lm
+gcc ./Resources/drawD.cpp ./Resources/drawT.cpp ./Resources/drawM.cpp ./Resources/drawMM.cpp ./Resources/drawF.cpp ./Resources/drawC.cpp ./Resources/cube.cpp ./mainBat.cpp ./Draw_Wing_Pt2.cpp -o tester -lGLU -lglut -lGL -lm
 
 echo "complete"
+
+./tester
+
+fin
 

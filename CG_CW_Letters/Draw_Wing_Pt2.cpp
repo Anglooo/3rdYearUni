@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////
 //
-// drawF.cpp To draw an F
+// Draw_Wing_Pt2.cpp To draw the second part of the wing.
 // 
 // Author: Thomas Frow
 // Date:   25/09/2013
@@ -19,31 +19,67 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "cube.h"
+#include "Resources/cube.h"
+#include "Resources/drawC.h"
+#include "Resources/drawD.h"
 
 
-void drawF() {
+void drawWingPt2() {
 
-	//Draw top 'arm' of F
-	glPushMatrix();
-		glTranslatef(0.75,1.25,0);
-		//glRotatef(0,0,0);
-		glScalef(2,0.5,0.5);
-		draw3DCube();
+glPushMatrix();
+
+	glTranslatef(0.0, 0.0, 0.0);
+	glRotatef(0.0, 0.0, 0.0, 0.0);
+	glScalef(1.0, 1.0, 1.0);
+
+	glPushMatrix();//Big D
+
+		glTranslatef(0.0, 0.0, 0.0);
+		glRotatef(0.0, 0.0, 0.0, 0.0);
+		glScalef(0.6, 1.0, 0.5);
+		drawD();
+
 	glPopMatrix();
-	//Draw bottom 'arm' of F
-	glPushMatrix();
-		glTranslatef(0.75,0,0);
-		//glRotatef(0,0,0);
-		glScalef(2,0.5,0.5);
-		draw3DCube();
+
+	glPushMatrix();//Top Left D
+
+		glTranslatef(-0.3, -1.6, 0.0);
+		glRotatef(180, 1.0, 0.0, 0.0);
+		glRotatef(50, 0.0, 0.0, 1.0);
+		glScalef(0.3, 0.3, 0.5);
+		drawD();
+
 	glPopMatrix();
-	//Draw bottom cube
-	glPushMatrix();
-		glTranslatef(0.00,0,0);
-		//glRotatef(1,90,0,0);
-		glScalef(0.5,3,0.5);
-		draw3DCube();
+
+	glPushMatrix();// Top Right D
+
+		glTranslatef(-0.175, -1.6, 0.0);
+		glRotatef(180, 1.0, 0.0, 0.0);
+		glRotatef(53, 0.0, 0.0, 1.0);
+		glScalef(0.3, 0.3, 0.5);
+		drawD();
+
 	glPopMatrix();
+
+	glPushMatrix(); //Bottom Left D
+
+		glTranslatef(-0.3, 1.6, 0.0);
+		glRotatef(50, 0.0, 0.0, 1.0);
+		glScalef(0.3, 0.3, 0.5);
+		drawD();
+
+	glPopMatrix();
+
+	glPushMatrix(); //Bottom Right D
+
+		glTranslatef(-0.175, 1.6, 0.0);
+		glRotatef(53, 0.0, 0.0, 1.0);
+		glScalef(0.3, 0.3, 0.5);
+		drawD();
+
+	glPopMatrix();
+
+	
+glPopMatrix();
 	
 }
