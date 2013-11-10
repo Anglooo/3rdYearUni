@@ -19,10 +19,12 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "cube.h"
+#include "Resources/cube.h"
+#include "Draw_Wing_Pt1.h"
+#include "Draw_Wing_Pt2.h"
 
 
-void drawF() {
+void drawWingEnd() {
 
 
 }

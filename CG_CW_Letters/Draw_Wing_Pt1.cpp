@@ -25,21 +25,206 @@
 
 
 void drawWingPt1() {
+
+glTranslatef(0.0, 0.0, 0.0);
+glRotatef(90, 0.0, 0.0, 1.0);
+glScalef(1, 1, 1);
+
 glPushMatrix();
-	
-	//transformations to whole graphic.
-	glTranslatef(0.0, 0.0, 0.0);
-	glRotatef(0.0, 0.0, 0.0, 0.0);
-	glScalef(0.5, 0.5, 0.5);
 
-	glPushMatrix();//Big D
-
-		glTranslatef(0.0, 0.0, 0.0);
+	glPushMatrix();
+		
+		//transformations to whole graphic.
+		glTranslatef(0.075, 0, 0.0);
 		glRotatef(0.0, 0.0, 0.0, 0.0);
-		glScalef(1.0, 1.0, 1.0);
-		drawT();
+		glScalef(0.2, 0.2, 0.2);
+
+		float x = 0.0;
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();	
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x+0.1, 0.65, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 0.6, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
 
 	glPopMatrix();
-	
+	//BREAK HERE --------------------------------------------------------------------
+	glPushMatrix();
+		
+		//transformations to whole graphic.
+		glTranslatef(1.95, 0.4, 0.0);
+		glRotatef(240, 0.0, 0.0, 1.0);
+		glScalef(0.2, 0.2, 0.2);
+
+		 x = 0.0;
+
+		glPushMatrix();//T
+
+			glTranslatef(x+0.1, 0.65, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 0.6, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+	glPopMatrix();
+	//BREAK HERE ---------------------------------------------------------------------------------------
+	glPushMatrix();
+		
+		//transformations to whole graphic.
+		glTranslatef(1.95, 0.4, 0.0);
+		glRotatef(240, 0.0, 0.0, 1.0);
+		glScalef(0.2, 0.2, 0.2);
+
+		 x = 0.0;
+
+		glPushMatrix();//T
+
+			glTranslatef(x+0.1, 0.65, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 0.6, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+	glPopMatrix();
+
 glPopMatrix();
 }
