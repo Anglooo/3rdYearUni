@@ -32,7 +32,7 @@ glScalef(1, 1, 1);
 
 glPushMatrix();
 
-	glPushMatrix();
+	glPushMatrix();//top half
 		
 		//transformations to whole graphic.
 		glTranslatef(0.075, 0, 0.0);
@@ -188,6 +188,58 @@ glPushMatrix();
 
 			glTranslatef(x, 0, 0.0);
 			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;
+
+		glPopMatrix();
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			glRotatef(0, 0.0, 0.0, 1.0);
+			glScalef(1.0, 1.0, 1.0);
+			drawT();
+			x = x + 1.5;	
+
+		glPopMatrix();
+
+	glPopMatrix();
+		//BREAK HERE --------------------------------------------------------------------
+		glPushMatrix();
+		
+		//transformations to whole graphic.
+		glTranslatef(0.5, -1, 0.0);
+		glRotatef(180, 0.0, 0.0, 1.0);
+		glScalef(0.2, 0.2, 0.2);
+
+		 x = 0.0;
+
+
+		glPushMatrix();//T
+
+			glTranslatef(x, 0, 0.0);
+			//glRotatef(0, 0.0, 0.0, 1.0);
 			glScalef(1.0, 1.0, 1.0);
 			drawT();
 			x = x + 1.5;
