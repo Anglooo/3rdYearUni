@@ -18,19 +18,19 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "Resources/drawC.h"
-#include "Resources/drawD.h"
-#include "Resources/drawM.h"
-#include "Resources/drawT.h"
-#include "Resources/drawM.h"
-#include "Resources/drawF.h"
+//#include "Resources/drawC.h"
+//#include "Resources/drawD.h"
+//#include "Resources/drawM.h"
+//#include "Resources/drawT.h"
+//#include "Resources/drawM.h"
+//#include "Resources/drawF.h"
 //#include "Draw_Whole_Wing.h"
 //#include "Draw_Wing_End.h"
 //#include "Draw_Wing_Pt2.h"
-#include "Draw_Wing_Pt1.h"
+//#include "Draw_Wing_Pt1.h"
 //#include "Draw_Neck.h"
-#include "Draw_Body.h"
-#include "Draw_Whole_Wing.h"
+//#include "Draw_Body.h"
+//#include "Draw_Whole_Wing.h"
 #include "Draw_Animal.h"
 
 
@@ -102,8 +102,7 @@ void drawAxesAndGridLines(bool x_y_display, bool y_z_display,  bool x_z_display)
 
 void drawScene(int t)
 {
-	drawWholeWing();
-	//drawBody();
+	drawAnimal();
 }
 
 

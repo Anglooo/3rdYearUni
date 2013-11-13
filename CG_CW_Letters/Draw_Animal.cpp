@@ -19,9 +19,22 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "cube.h"
+#include "Resources/cube.h"
+#include "Draw_Body.h"
+#include "Draw_Whole_Wing.h"
 
 
 void drawAnimal() {
-
+glPushMatrix();
+	//glTranslatef(0.05, 0.0, 0.0);
+	//glRotatef(0, 0.0, 0.0, 1.0);
+	//glScalef(0.5, 0.5, 4);
+	drawWholeWing();	
+glPopMatrix();
+glPushMatrix();
+	//glTranslatef(0.05, 0.0, 0.0);
+	//glRotatef(0, 0.0, 0.0, 1.0);
+	//glScalef(0.5, 0.5, 4);
+	drawBody();	
+glPopMatrix();
 }
