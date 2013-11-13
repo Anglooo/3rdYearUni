@@ -39,7 +39,8 @@ void polygon(int a, int b, int c , int d)
 	// draw a polygon using colour of first vertex
 
  	glBegin(GL_POLYGON);
-		glColor3f(0,0,0);
+		//glColor3f(0,0,0);
+		glColor3fv(colors[a]);
 		glVertex3fv(vertices[a]);
 		glVertex3fv(vertices[b]);
 		glVertex3fv(vertices[c]);
@@ -48,7 +49,8 @@ void polygon(int a, int b, int c , int d)
 
 	glEnable(GL_LINE_SMOOTH);
 	glBegin(GL_LINE_LOOP);
-		glColor3f(205,201,201);
+		glColor3fv(colors[a]);
+		//glColor3f(205,201,201);
 		glVertex3fv(vertices[a]);
 		glVertex3fv(vertices[b]);
 		glVertex3fv(vertices[c]);

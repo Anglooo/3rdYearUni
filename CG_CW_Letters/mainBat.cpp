@@ -28,6 +28,10 @@
 //#include "Draw_Wing_End.h"
 //#include "Draw_Wing_Pt2.h"
 #include "Draw_Wing_Pt1.h"
+//#include "Draw_Neck.h"
+#include "Draw_Body.h"
+#include "Draw_Whole_Wing.h"
+#include "Draw_Animal.h"
 
 
 //static double theta_stop1 = 270;
@@ -47,8 +51,9 @@ void draw3dMCD();
 
 void drawAxesAndGridLines(bool x_y_display, bool y_z_display,  bool x_z_display)
 {
+	float offset;
 	glBegin(GL_LINES);
-		glColor3f(0.0,0.0,0.0);
+		glColor3f(1, 0, 0);
 		glVertex3f(-20, 0, 0);					
 		glVertex3f(+20, 0, 0);					
 		glVertex3f( 0 ,-20, 0);				    	
@@ -57,12 +62,48 @@ void drawAxesAndGridLines(bool x_y_display, bool y_z_display,  bool x_z_display)
 		glVertex3f(	0, 0, +20);
 
 	glEnd();
+	
+	glLineStipple(1, 0xAAAA); //line style = fine dots
+	glEnable(GL_LINE_STIPPLE);
+
+	glBegin(GL_LINES);
+		
+		if (x_y_display) {glColor3f(0.0,0.7,0.7);
+		for (offset=-10.0;offset<10.1;offset++){
+			//draw lines in x-y plane
+			glVertex3f(-10.0, offset, 0.0);					// Top Left
+			glVertex3f(+10.0, offset, 0.0);					// Top Right
+			glVertex3f( offset,-10, 0.0);					// Bottom Right
+			glVertex3f(	offset,+10.0, 0.0);					// Bottom Left
+		}}
+
+		if (y_z_display) {glColor3f(0.7,0.0,0.7);
+		for (offset=-10.0;offset<10.1;offset++){
+			//draw lines in y-z plane
+			glVertex3f( 0, offset, -10);					
+			glVertex3f(	0, offset, 10.0);
+			glVertex3f( 0, -10, offset);					
+			glVertex3f(	0, 10, offset);
+		}}
+
+		if (x_z_display) {glColor3f(0.7,0.7,0.0);
+		for (offset=-10.0;offset<10.1;offset++){
+			//draw lines in x-z plane
+			glVertex3f( offset, 0, -10);					
+			glVertex3f(	offset, 0, 10.0);
+			glVertex3f( -10, 0, offset);					
+			glVertex3f(	10, 0, offset);
+		}}
+
+	glEnd();
+	glDisable(GL_LINE_STIPPLE);
 }
 
 
 void drawScene(int t)
 {
-	drawWingPt1();
+	drawWholeWing();
+	//drawBody();
 }
 
 

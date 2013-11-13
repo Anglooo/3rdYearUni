@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////
 //
-// drawF.cpp To draw an Animal
+// Draw_Animal.cpp To draw an Animal
 // 
 // Author: Thomas Frow
 // Date:   25/09/2013

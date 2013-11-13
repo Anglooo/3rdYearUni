@@ -22,13 +22,10 @@
 #include "Resources/cube.h"
 #include "Resources/drawT.h"
 #include "Resources/drawF.h"
-
-
-void drawWingPt1() {
-
-glTranslatef(0.0, 0.0, 0.0);
-glRotatef(90, 0.0, 0.0, 1.0);
-glScalef(1, 1, 1);
+void drawHalf() {
+glTranslatef(-0.25, 0.0, 0.0);
+//glRotatef(90, 0.0, 0.0, 1.0);
+//glScalef(1, 1, 1);
 
 glPushMatrix();
 
@@ -229,7 +226,7 @@ glPushMatrix();
 		glPushMatrix();
 		
 		//transformations to whole graphic.
-		glTranslatef(0.5, -1, 0.0);
+		glTranslatef(1.3, -1, 0.0);
 		glRotatef(180, 0.0, 0.0, 1.0);
 		glScalef(0.2, 0.2, 0.2);
 
@@ -278,5 +275,29 @@ glPushMatrix();
 
 	glPopMatrix();
 
-glPopMatrix();
+glPopMatrix();	
 }
+
+
+void drawWingPt1() {
+glTranslatef(0.0, 0.0, 0.0);
+glRotatef(90, 0.0, 0.0, 1.0);
+
+
+glPushMatrix();
+	glTranslatef(0.0, 0.0, 0.0);
+	//glRotatef(0, 0.0, 0.0, 1.0);
+
+	drawHalf();
+glPopMatrix();
+
+glPushMatrix();
+	glTranslatef(0.0, 0.0, 0.0);
+	glRotatef(180, 0.0, 1.0, 0.0);
+
+	drawHalf();
+glPopMatrix();
+
+}
+
+

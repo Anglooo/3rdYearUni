@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////
 //
-// drawF.cpp To draw an F
+// Draw_Body.cpp To draw a Body
 // 
 // Author: Thomas Frow
 // Date:   25/09/2013
@@ -19,11 +19,40 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "cube.h"
+#include "Resources/cube.h"
+#include "Resources/drawC.h"
+#include "Resources/drawD.h"
+#include "Resources/drawMM.h"
+#include "Resources/drawT.h"
+#include "Resources/drawM.h"
+#include "Resources/drawF.h"
 
+void drawBody() {
 
-void drawF() {
-
-
+	glPushMatrix();
+		glRotatef(0, 0.0, 0.0, 1.0);
+		glScalef(1.0, 1.0, 1.0);
+		drawMM();
+	glPopMatrix();
 	
+	glPushMatrix();
+		glTranslatef(1.25, 0.0, 0.0);
+		glRotatef(180, 0.0, 0.0, 1.0);
+		glScalef(1.0, 1.0, 1.0);
+		drawM();
+	glPopMatrix();
+	
+	glPushMatrix();
+		glTranslatef(-1.5, 0.5, 0.0);
+		glRotatef(0, 0.0, 0.0, 1.0);
+		glScalef(1.0, 1.0, 1.0);
+		drawT();
+	glPopMatrix();
+	
+	glPushMatrix();
+		glTranslatef(1.5, -0.5, 0.0);
+		glRotatef(180, 0.0, 0.0, 1.0);
+		glScalef(1.0, 1.0, 1.0);
+		drawT();
+	glPopMatrix();
 }
