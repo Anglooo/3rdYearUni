@@ -19,10 +19,16 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "cube.h"
+#include "Resources/cube.h"
+#include "Resources/drawC.h"
+#include "Resources/drawD.h"
+#include "Resources/drawM.h"
+#include "Resources/drawT.h"
+#include "Resources/drawM.h"
+#include "Resources/drawF.h"
 
 
-void drawF() {
+void drawNeck() {
 
 
 	
