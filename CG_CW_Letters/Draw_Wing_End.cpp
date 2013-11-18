@@ -26,9 +26,9 @@
 
 void drawWingEnd() {
 glPushMatrix();
-	glTranslatef(0.05, 0.0, 0.0);
-	//glRotatef(0, 0.0, 0.0, 1.0);
-	glScalef(0.5, 0.5, 4);
+	glTranslatef(0.5, 0.0, 0.0);
+	glRotatef(180, 0.0, 0.0, 1.0);
+	glScalef(0.5, 0.7, 4);
 	drawWingPt1();	
 glPopMatrix();
 

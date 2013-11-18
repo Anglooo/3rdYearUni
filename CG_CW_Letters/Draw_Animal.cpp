@@ -26,15 +26,21 @@
 
 void drawAnimal() {
 glPushMatrix();
-	//glTranslatef(0.05, 0.0, 0.0);
+	glTranslatef(0.85, 0.0, 0.0);
 	//glRotatef(0, 0.0, 0.0, 1.0);
-	//glScalef(0.5, 0.5, 4);
+	glScalef(0.5, 0.5, 0.5);
 	drawWholeWing();	
 glPopMatrix();
 glPushMatrix();
-	//glTranslatef(0.05, 0.0, 0.0);
+	glTranslatef(-0.85, 0.0, 0.0);
+	glRotatef(180, 0.0, 0.0, 1.0);
+	glScalef(0.5, 0.5, 0.5);
+	drawWholeWing();	
+glPopMatrix();
+glPushMatrix();
+	glTranslatef(0, 0.0, 0.0);
 	//glRotatef(0, 0.0, 0.0, 1.0);
-	//glScalef(0.5, 0.5, 4);
+	glScalef(0.3, 0.3, 0.3);
 	drawBody();	
 glPopMatrix();
 }

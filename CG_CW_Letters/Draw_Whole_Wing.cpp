@@ -31,9 +31,9 @@ glPushMatrix();
 glPopMatrix();
 
 glPushMatrix();
-	glTranslatef(-1, 0.0, 0.0);
-	//glRotatef(0, 0.0, 0.0, 1.0);
-	glScalef(0.7, 0.95, 4);
+	glTranslatef(-0.3, 0.0, 0.0);
+	glRotatef(180, 0.0, 1.0, 0.0);
+	glScalef(0.35, 0.37, 4);
 	drawWingPt1();
 glPopMatrix();
 	
