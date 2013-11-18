@@ -22,25 +22,34 @@
 #include "Resources/cube.h"
 #include "Draw_Body.h"
 #include "Draw_Whole_Wing.h"
+#include "Draw_Head.h"
 
 
 void drawAnimal() {
-glPushMatrix();
-	glTranslatef(0.85, 0.0, 0.0);
-	//glRotatef(0, 0.0, 0.0, 1.0);
-	glScalef(0.5, 0.5, 0.5);
-	drawWholeWing();	
-glPopMatrix();
-glPushMatrix();
-	glTranslatef(-0.85, 0.0, 0.0);
-	glRotatef(180, 0.0, 0.0, 1.0);
-	glScalef(0.5, 0.5, 0.5);
-	drawWholeWing();	
-glPopMatrix();
-glPushMatrix();
-	glTranslatef(0, 0.0, 0.0);
-	//glRotatef(0, 0.0, 0.0, 1.0);
-	glScalef(0.3, 0.3, 0.3);
-	drawBody();	
-glPopMatrix();
+	glScalef(0.5,0.5,0.5);
+		glPushMatrix();
+			glPushMatrix();
+				glTranslatef(1.3, 0.0, 0.0);
+				//glRotatef(0, 0.0, 0.0, 1.0);
+				glScalef(1.2, 0.8, 0.5);
+				drawWholeWing();	
+			glPopMatrix();
+			glPushMatrix();
+				glTranslatef(-1.3, 0.0, 0.0);
+				glRotatef(180, 0.0, 0.0, 1.0);
+				glScalef(1.2, 0.8, 0.5);
+				drawWholeWing();	
+			glPopMatrix();
+			glPushMatrix();
+				glTranslatef(0, 0.0, 0.0);
+				//glRotatef(0, 0.0, 0.0, 1.0);
+				glScalef(0.3, 0.3, 0.3);
+				drawBody();	
+			glPopMatrix();
+			glPushMatrix();
+				glTranslatef(0,0.6,0);
+				glScalef(0.25,0.1,0.3);
+				drawHead();
+		glPopMatrix();
+	glPopMatrix();
 }
