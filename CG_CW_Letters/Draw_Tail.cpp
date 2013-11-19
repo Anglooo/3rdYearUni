@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////
 //
-// drawF.cpp To draw an F
+// Draw_Tail.cpp: To draw the tail
 // 
 // Author: Thomas Frow
 // Date:   25/09/2013
@@ -19,10 +19,40 @@
 
 #include <math.h>
 #include <stdio.h>
-#include "cube.h"
+#include "Draw_Tail_Seg.h"
+ 
 
+void drawTail() {
+	
+	glPushMatrix();
+		//glRotatef(0, 0.0, 0.0, 1.0);
+		glTranslatef(-0.40, -0.7, 0.0);
+		//glScalef(0.8, 1,1);
+		drawTailSeg();
+	glPopMatrix();
+	
+	glPushMatrix();
+		//glRotatef(0, 0.0, 0.0, 1.0);
+		glTranslatef(-0.40, -0.75, 0.0);
+		//glScalef(0.8, 1,1);
+		drawTailSeg();
+	glPopMatrix();
+	
+	glPushMatrix();
+		//glRotatef(0, 0.0, 0.0, 1.0);
+		glTranslatef(-0.40, -0.8, 0.0);
+		//glScalef(0.8, 1,1);
+		drawTailSeg();
+	glPopMatrix();
+	
+	glPushMatrix();
+		//glRotatef(0, 0.0, 0.0, 1.0);
+		glTranslatef(-0.40, -0.85, 0.0);
+		//glScalef(0.8, 1,1);
+		drawTailSeg();
+	glPopMatrix();
 
-void drawF() {
 
 	
+		
 }

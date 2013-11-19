@@ -23,6 +23,7 @@
 #include "Draw_Body.h"
 #include "Draw_Whole_Wing.h"
 #include "Draw_Head.h"
+#include "Draw_Tail.h"
 
 
 void drawAnimal() {
@@ -51,5 +52,11 @@ void drawAnimal() {
 				glScalef(0.25,0.1,0.3);
 				drawHead();
 		glPopMatrix();
+	glPopMatrix();
+	
+	glPushMatrix();
+		//glTranslatef(0,0,0);
+		//glScalef(1,1,1);
+		drawTail();
 	glPopMatrix();
 }
