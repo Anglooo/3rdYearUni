@@ -24,10 +24,11 @@
 #include "Draw_Wing_Pt1.h"
 
 
-void drawWholeWing(){
+void drawWholeWing(float wingAngle){
 	
 glPushMatrix();
-	drawWingEnd();
+	glRotatef(wingAngle,0,0,0);
+	drawWingEnd(wingAngle);
 glPopMatrix();
 
 glPushMatrix();

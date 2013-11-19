@@ -24,9 +24,10 @@
 #include "Draw_Wing_Pt2.h"
 
 
-void drawWingEnd() {
+void drawWingEnd(float wingAngle) {
 glPushMatrix();
 	glTranslatef(0.5, 0.0, 0.0);
+	glRotatef(wingAngle, 0.0, 0.0, 1.0);
 	glRotatef(180, 0.0, 0.0, 1.0);
 	glScalef(0.5, 0.7, 4);
 	drawWingPt1();	
@@ -34,7 +35,7 @@ glPopMatrix();
 
 glPushMatrix();
 	glTranslatef(1.0, 0.0, 0.0);
-	//glRotatef(0, 0.0, 1.0, 0.0);
+	glRotatef(wingAngle, 0.0, 1.0, 0.0);
 	glScalef(1, 1, 1);
 	drawWingPt2();
 glPopMatrix();

@@ -1,1 +1,1 @@
-extern void drawWingEnd();
+extern void drawWingEnd(float wingAngle);

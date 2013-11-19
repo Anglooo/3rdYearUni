@@ -26,20 +26,21 @@
 #include "Draw_Tail.h"
 
 
-void drawAnimal() {
+void drawAnimal(float WingAngle,float tailAngle) {
 	glScalef(0.5,0.5,0.5);
 		glPushMatrix();
 			glPushMatrix();
 				glTranslatef(1.3, 0.0, 0.0);
-				//glRotatef(0, 0.0, 0.0, 1.0);
+				//glRotatef(WingAngle, 0.0, 0.0,0.0);
 				glScalef(1.2, 0.8, 0.5);
-				drawWholeWing();	
+				drawWholeWing(WingAngle);	
 			glPopMatrix();
 			glPushMatrix();
 				glTranslatef(-1.3, 0.0, 0.0);
+				//glRotatef(WingAngle, 0.0, 0.0,0.0);//Swoosh
 				glRotatef(180, 0.0, 0.0, 1.0);
 				glScalef(1.2, 0.8, 0.5);
-				drawWholeWing();	
+				drawWholeWing(WingAngle);	
 			glPopMatrix();
 			glPushMatrix();
 				glTranslatef(0, 0.0, 0.0);
@@ -55,8 +56,6 @@ void drawAnimal() {
 	glPopMatrix();
 	
 	glPushMatrix();
-		//glTranslatef(0,0,0);
-		//glScalef(1,1,1);
 		drawTail();
 	glPopMatrix();
 }

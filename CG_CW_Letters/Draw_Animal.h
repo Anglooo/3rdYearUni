@@ -1,1 +1,1 @@
-extern void drawAnimal();
+extern void drawAnimal(float WingAngle, float tailAngle);

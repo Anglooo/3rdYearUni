@@ -36,6 +36,45 @@ void draw3dD();
 void draw3dCD();
 void draw3dMCD();
 
+bool wingMove = false;
+bool tailMove = false;
+
+double wingAngle = 0;
+double tailAngle = 0;
+
+
+
+void tailAnimationTrigger()
+{
+	if(tailMove = false)
+	{
+		tailMove = true;
+		tailAngle = cos(counter)*10;//Need to be changed.
+	}
+	else
+	{
+		tailMove = false;
+		tailAngle = 0;
+	}	
+}
+
+void wingAnimationTrigger()
+{
+	if(wingMove = false)
+	{
+		wingMove = true;
+		wingAngle = cos(counter)*10;//Need to be changed.
+		printf("Wing Triggered");
+	}
+	else
+	{
+		wingMove = false;
+		wingAngle = 0;
+	}	
+}
+
+
+
 void drawAxesAndGridLines(bool x_y_display, bool y_z_display,  bool x_z_display)
 {
 	float offset;
@@ -89,9 +128,16 @@ void drawAxesAndGridLines(bool x_y_display, bool y_z_display,  bool x_z_display)
 
 void drawScene(int t)
 {
-	drawAnimal();
-}
+	counter = counter + 0.01;
+	drawAnimal(wingAngle,tailMove);
 
+	if(wingAnimationTrigger||tailAnimationTrigger)
+	{
+		//glutPostRedisplay();//post graphics to graphics card
+		glutTimerFunc(100,drawScene, 0);//recall drawscene every 50 milliseconds
+	}
+
+}
 
 //Mouse Controls
 void idleCallBack (){
@@ -174,6 +220,15 @@ void keyboardCallBack(unsigned char key, int x, int y) {
 	case 'R':
         resetView();
 	break;
+	case 'w':
+        wingAnimationTrigger();
+        printf("triggered Wing Animation");
+	break;
+	case 't':
+        tailAnimationTrigger();
+        printf("triggered Tail Animation");
+	break;
+
 	default:
 		printf("Press b - back fill; f - front fill; l - line; i - increment; or d - decrement; r - rotate; R - reset view\n");
 	}
@@ -209,7 +264,7 @@ int main(int argc, char* argv[])
 	glutIdleFunc(NULL); // Starts the Idle Function as having no routine attached to it. This is modified in rotateView()
 	glutMouseFunc(mouseClickCallBack);
     glutMotionFunc(mouseMotionCallBack);
-	//glutKeyboardFunc(keyboardCallBack);
+	glutKeyboardFunc(keyboardCallBack);
 
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glColor3f(0.0,0.0,0.0);
