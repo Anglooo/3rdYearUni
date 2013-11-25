@@ -19,6 +19,11 @@
 #include <math.h>
 #include <stdio.h>
 #include "Draw_Animal.h"
+#include "Draw_Body.h"
+#include "Draw_Whole_Wing.h"
+#include "Draw_Tail.h"
+#include "Draw_Head.h"
+
 
 
 //static double theta_stop1 = 270;
@@ -28,50 +33,109 @@ float pitch0, yaw0;
 bool MousePressed;
 int mouseX0, mouseY0;
 bool rotating=false;
-double counter = 0.0;
 
-void draw3DCube();
-void draw3dMC();
-void draw3dD();
-void draw3dCD();
-void draw3dMCD();
+
 
 bool wingMove = false;
 bool tailMove = false;
 
+bool showWhole =  true;
+bool showWing = false;
+bool showBody = false;
+bool showHead = false;
+bool showTail = false;
+
 double wingAngle = 0;
 double tailAngle = 0;
-
+double counter = 0.0;
 
 
 void tailAnimationTrigger()
 {
-	if(tailMove = false)
+	if(tailMove == false)
 	{
 		tailMove = true;
-		tailAngle = cos(counter)*10;//Need to be changed.
+		printf("Tail Triggered");		
 	}
 	else
 	{
 		tailMove = false;
-		tailAngle = 0;
 	}	
 }
 
 void wingAnimationTrigger()
 {
-	if(wingMove = false)
+	if(wingMove == false)
 	{
 		wingMove = true;
-		wingAngle = cos(counter)*10;//Need to be changed.
 		printf("Wing Triggered");
 	}
 	else
 	{
 		wingMove = false;
-		wingAngle = 0;
 	}	
 }
+
+void showWholeTrigger()
+{
+	if(showWhole == false)
+	{
+		showWhole = true;
+	}
+	else
+	{
+		showWhole = false;
+	}	
+}
+
+void showWingTrigger()
+{
+	if(showWing == false)
+	{
+		showWing = true;
+	}
+	else
+	{
+		showWing = false;
+	}	
+}
+
+void showBodyTrigger()
+{
+	if(showBody == false)
+	{
+		showBody = true;
+	}
+	else
+	{
+		showBody = false;
+	}	
+}
+
+void showTailTrigger()
+{
+	if(showTail == false)
+	{
+		showTail = true;
+	}
+	else
+	{
+		showTail = false;
+	}	
+}
+
+void showHeadTrigger()
+{
+	if(showHead == false)
+	{
+		showHead = true;
+	}
+	else
+	{
+		showHead = false;
+	}	
+}
+
 
 
 
@@ -127,16 +191,72 @@ void drawAxesAndGridLines(bool x_y_display, bool y_z_display,  bool x_z_display)
 
 
 void drawScene(int t)
-{
+{	
 	counter = counter + 0.01;
-	drawAnimal(wingAngle,tailMove);
-
-	if(wingAnimationTrigger||tailAnimationTrigger)
+	if(counter > 10)
 	{
-		//glutPostRedisplay();//post graphics to graphics card
-		glutTimerFunc(100,drawScene, 0);//recall drawscene every 50 milliseconds
+	counter = 0;	
 	}
+	
+	if(wingMove == true)
+	{
+		wingAngle = cos(counter)*30;
+	}
+	else
+	{
+			wingAngle = 0;
+	}
+	
+	if(tailMove == true)
+	{
+		tailAngle = cos(counter)*10;
+	}
+	else
+	{
+			tailAngle = 0;
+	}
+	
+	
+	if(showWhole == true)
+	{
+		drawAnimal(wingAngle,tailAngle);
+		showWing = false;
+		showTail = false;
+		showBody = false;
+		showHead = false;
+	}
+	
+	if(showWing == true)
+	{
+		drawWholeWing(wingAngle);
+		showWhole = false;
+	}
+	
+	if(showHead == true)
+	{
+		glPushMatrix();
+			glScalef(0.5, 0.5, 0.5);
 
+			drawHead();
+		glPopMatrix();
+		
+		showWhole = false;
+	}
+	
+	if(showTail == true)
+	{
+		drawTail(tailAngle);
+		showWhole = false;
+	}
+	
+	if(showBody == true)
+	{
+		drawBody();
+		showWhole = false;
+	}
+	
+	glutPostRedisplay();
+	glutTimerFunc(100,drawScene, 0);
 }
 
 //Mouse Controls
@@ -228,6 +348,23 @@ void keyboardCallBack(unsigned char key, int x, int y) {
         tailAnimationTrigger();
         printf("triggered Tail Animation");
 	break;
+	case 'T':
+        showTailTrigger();
+        printf("showing tail");
+	break;
+	case 'H':
+        showHeadTrigger();
+        printf("showing head");
+	break;
+	case 'W':
+        showWingTrigger();
+        printf("showing Wing");
+	break;
+	case 'p':
+        showWholeTrigger();
+        printf("Showing Whole Animal");
+	break;
+	
 
 	default:
 		printf("Press b - back fill; f - front fill; l - line; i - increment; or d - decrement; r - rotate; R - reset view\n");
@@ -280,7 +417,13 @@ int main(int argc, char* argv[])
 	printf("Key \"i\" - Increment Sections of Curve.\n");
 	printf("Key \"d\" - Decrement Sections of Curve.\n");
 	printf("Key \"r\" - Automated Rotation.\n");
-	printf("Key \"R\" - Reset the View.\n");
+	printf("Key \"w\" - Start and stop the wing animation\n");
+	printf("Key \"t\" - Start and stop the tail animation.\n");
+	printf("Key \"p\" - Show the whole animal\n");
+	printf("Key \"T\" - Show just the tail\n");
+	printf("Key \"H\" - Show just the head\n");
+	printf("Key \"W\" - Show just the wing\n");
+	printf("Key \"B\" - Show just the body\n");
 
 	glutMainLoop();
 

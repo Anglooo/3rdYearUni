@@ -22,37 +22,47 @@
 #include "Draw_Tail_Seg.h"
  
 
-void drawTail() {
+void drawTail(double tailAngle) {
 	
+glPushMatrix();
+
 	glPushMatrix();
-		//glRotatef(0, 0.0, 0.0, 1.0);
-		glTranslatef(-0.40, -0.7, 0.0);
-		//glScalef(0.8, 1,1);
-		drawTailSeg();
-	glPopMatrix();
-	
-	glPushMatrix();
-		//glRotatef(0, 0.0, 0.0, 1.0);
-		glTranslatef(-0.40, -0.75, 0.0);
-		//glScalef(0.8, 1,1);
-		drawTailSeg();
-	glPopMatrix();
-	
-	glPushMatrix();
-		//glRotatef(0, 0.0, 0.0, 1.0);
-		glTranslatef(-0.40, -0.8, 0.0);
-		//glScalef(0.8, 1,1);
-		drawTailSeg();
-	glPopMatrix();
-	
-	glPushMatrix();
-		//glRotatef(0, 0.0, 0.0, 1.0);
-		glTranslatef(-0.40, -0.85, 0.0);
-		//glScalef(0.8, 1,1);
-		drawTailSeg();
+	glRotatef(tailAngle , 1.0, 0.0, 0.0);		
+		glPushMatrix();
+			glTranslatef(-0.40, -0.0, 0.0);
+			drawTailSeg();
+		glPopMatrix();
 	glPopMatrix();
 
 
+	glPushMatrix();
+	glRotatef(tailAngle, 1.0, 0.0, 0.0);	
+		glPushMatrix();
+			glTranslatef(-0.40, -0.08, 0.0);
+			//glScalef(0.8, 1,1);
+			drawTailSeg();
+		glPopMatrix();
+	glPopMatrix();
+	
+	glPushMatrix();
+	glRotatef(tailAngle, 1.0, 0.0, 0.0);	
+		glPushMatrix();
+			glTranslatef(-0.40, -0.16, 0.0);
+			//glScalef(0.8, 1,1);
+			drawTailSeg();
+		glPopMatrix();
+	glPopMatrix();
+	
+	glPushMatrix();
+	glRotatef(tailAngle, 1.0, 0.0, 0.0);
+		glPushMatrix();
+			glTranslatef(-0.40, -0.24, 0.0);
+			drawTailSeg();
+		glPopMatrix();
+		
+	glPopMatrix();
+	
+glPopMatrix();
 	
 		
 }

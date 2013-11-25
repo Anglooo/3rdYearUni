@@ -1,1 +1,1 @@
-extern void drawTail();
+extern void drawTail(double tailAngle);

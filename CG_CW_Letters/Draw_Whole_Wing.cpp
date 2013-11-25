@@ -27,15 +27,18 @@
 void drawWholeWing(float wingAngle){
 	
 glPushMatrix();
-	glRotatef(wingAngle,0,0,0);
+	glRotatef(wingAngle,0,1.0,0);
 	drawWingEnd(wingAngle);
 glPopMatrix();
 
 glPushMatrix();
-	glTranslatef(-0.3, 0.0, 0.0);
-	glRotatef(180, 0.0, 1.0, 0.0);
-	glScalef(0.35, 0.37, 4);
-	drawWingPt1();
+glRotatef(wingAngle, 0.0, 1.0, 0.0);
+	glPushMatrix();
+		glTranslatef(-0.3, 0.0, 0.0);
+		glRotatef(180, 0.0, 1.0, 0.0);
+		glScalef(0.35, 0.37, 4);
+		drawWingPt1();
+	glPopMatrix();
 glPopMatrix();
 	
 }

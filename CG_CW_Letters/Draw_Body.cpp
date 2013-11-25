@@ -55,4 +55,18 @@ void drawBody() {
 		glScalef(1.0, 1.0, 1.0);
 		drawT();
 	glPopMatrix();
+	
+	glPushMatrix();
+		glTranslatef(0.2, -0.5, 0.0);
+		glRotatef(180, 0.0, 1.0, 0.0);
+		glScalef(1.0, 1.0, 1.0);
+		drawF();
+	glPopMatrix();
+	
+	glPushMatrix();
+		glTranslatef(0, -0.5, 0.0);
+		//glRotatef(0.0,0.0, 0.0, 1.0);
+		glScalef(1.0, 0.9, 1.0);
+		drawF();
+	glPopMatrix();
 }

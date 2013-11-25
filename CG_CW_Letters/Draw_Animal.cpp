@@ -30,18 +30,29 @@ void drawAnimal(float WingAngle,float tailAngle) {
 	glScalef(0.5,0.5,0.5);
 		glPushMatrix();
 			glPushMatrix();
-				glTranslatef(1.3, 0.0, 0.0);
-				//glRotatef(WingAngle, 0.0, 0.0,0.0);
-				glScalef(1.2, 0.8, 0.5);
-				drawWholeWing(WingAngle);	
+			glRotatef(WingAngle, 0.0, 1.0,0.0);
+			
+				glPushMatrix();
+					//printf("%f",WingAngle);
+					glTranslatef(1.3, 0.0, 0.0);
+					glScalef(1.2, 0.8, 0.5);
+					drawWholeWing(WingAngle);	
+				glPopMatrix();
+				
 			glPopMatrix();
+			
 			glPushMatrix();
-				glTranslatef(-1.3, 0.0, 0.0);
-				//glRotatef(WingAngle, 0.0, 0.0,0.0);//Swoosh
-				glRotatef(180, 0.0, 0.0, 1.0);
-				glScalef(1.2, 0.8, 0.5);
-				drawWholeWing(WingAngle);	
+			glRotatef(WingAngle * -1, 0.0, 1.0,0.0);
+			
+				glPushMatrix();
+					glTranslatef(-1.3, 0.0, 0.0);
+					glRotatef(180, 0.0, 0.0, 1.0);
+					glScalef(1.2, 0.8, 0.5);
+					drawWholeWing(WingAngle);	
+				glPopMatrix();
+				
 			glPopMatrix();
+			
 			glPushMatrix();
 				glTranslatef(0, 0.0, 0.0);
 				//glRotatef(0, 0.0, 0.0, 1.0);
@@ -56,6 +67,10 @@ void drawAnimal(float WingAngle,float tailAngle) {
 	glPopMatrix();
 	
 	glPushMatrix();
-		drawTail();
+	glRotatef(tailAngle, 1.0, 0.0, 0.0);
+		glPushMatrix();
+			glTranslatef(0,-0.7,0);
+			drawTail(tailAngle);
+		glPopMatrix();
 	glPopMatrix();
 }
