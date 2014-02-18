@@ -27,7 +27,8 @@ int numberToBeProduced;
 int numberProduced = 0;
 int runningThreads = 0;
  
-pthread_t tid;       //Thread ID
+pthread_t tid,tid0, tid1;
+       //Thread ID
 pthread_attr_t attr; //Set of thread attributes
  
 void *producer(void *param); /* the producer thread */
@@ -105,19 +106,20 @@ void *consumer0(void *param) {
       }
       else {
 
-         printf("consumerid: %d. item number: %d \n",consID, item);
+         printf("ConsumerID: %d. Item: %d.\n",consID, item);
       }
-      //printf("looping: %d id: %d \n", item, consID);
 
-
-      if(item == 0){
+      if(item <= 0){
          printf("ConsumerID: %d. Nothing to consume. \n",consID);
-         pthread_exit(0);
+         printf("The program will exit\n");
+         exit(0);
       }
-      /* release the mutex lock */
+
+       /* release the mutex lock */
       pthread_mutex_unlock(&mutex);
       /* signal empty */
       sem_post(&empty);
+
    }
 }
 
@@ -147,9 +149,10 @@ void *consumer1(void *param) {
       //printf("looping: %d id: %d \n", item, consID);
 
 
-      if(item == 0){
+      if(item <= 0){
          printf("ConsumerID: %d. Nothing to consume. \n",consID);
-         pthread_exit(0);
+         printf("The program will exit\n");
+         exit(0);
       }
       /* release the mutex lock */
       pthread_mutex_unlock(&mutex);
@@ -196,15 +199,14 @@ int main(int argc, char *argv[]) {
    /* Initialize the app */
    initializeData();
 
-   pthread_create(&tid,&attr,producer,NULL);     
+   pthread_create(&tid,&attr,producer,NULL);   
 
 
-   pthread_create(&tid,&attr,consumer0,NULL);
-   pthread_create(&tid,&attr,consumer1,NULL);
+   pthread_create(&tid0,&attr,consumer0,NULL);
+   pthread_create(&tid1,&attr,consumer1,NULL);
 
-   sleep(15);
-   /* Sleep for the specified amount of time in milliseconds */
-   /* Exit the program */
-   printf("Exit the program\n");
-   exit(0);
+   (void) pthread_join(tid0, NULL);
+   (void) pthread_join(tid1, NULL);
+
+   return(0);
 }
