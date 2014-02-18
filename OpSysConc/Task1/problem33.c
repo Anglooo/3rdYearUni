@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	
 	int pid;	
 	pid = fork();
-	char test  = argv[0];
+	char *test  = argv[0];
 	
 	if(pid == -1){
 		exit(EXIT_FAILURE);

@@ -3,10 +3,11 @@
 #include <sys/types.h>
 #include <stdio.h>
 
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+	
 	execve("/bin/ls", argv, NULL);
 
-	//return (int)1;
+	return 1;
 
 }
