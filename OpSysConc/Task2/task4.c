@@ -127,10 +127,8 @@ void *consumer1(void *param) {
    buffer_item item;
    int consID = 1;
    int loopCheck = 1;
-   //printf("loopbroken \n");
    while(loopCheck ==1) {
-      /* sleep for a random period of time
-      int rNum = rand() / RAND_DIVISOR;*/
+
       sleep(1);
  
       /* aquire the full lock */
@@ -144,10 +142,8 @@ void *consumer1(void *param) {
       }
       else {
 
-         printf("consumerid: %d. item number: %d \n",consID, item);
+         printf("Consumerid: %d. Item: %d \n",consID, item);
       }
-      //printf("looping: %d id: %d \n", item, consID);
-
 
       if(item <= 0){
          printf("ConsumerID: %d. Nothing to consume. \n",consID);
