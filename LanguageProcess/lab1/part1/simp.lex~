@@ -1,0 +1,15 @@
+%{ 
+#include "tokens.h" 
+%} 
+
+DIGIT [0-9] 
+%% 
+
+";" { return SEMI;} 
+{DIGIT}+ { return INT; } 
+
+[ \t\n]+ /* eat up whitespace */ 
+
+%% 
+
+int yywrap() { return EOF; }

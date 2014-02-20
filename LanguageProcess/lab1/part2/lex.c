@@ -65,7 +65,7 @@ main(int argc,char ** argv)
    // printf("num: %d\n",ch);
    
    // Q: why is not EOF returned?
-   while(symb != 0)
+   while(symb != EOF)
    {  
    	   symb = yylex();
    	   printSymb();

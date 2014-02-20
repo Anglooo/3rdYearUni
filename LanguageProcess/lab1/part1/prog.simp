@@ -1,0 +1,6 @@
+VAR x;
+VAR y;
+x := 1;
+y := 0;
+REPEAT x+1 UNTIL x ==10;
+x :^ 1;

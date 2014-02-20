@@ -1,4 +1,4 @@
-#define TBEGIN 10
+#define BEGIN 10
 #define DO 1
 #define ELSE 2
 #define END 3
@@ -8,11 +8,6 @@
 #define THEN 7
 #define VAR 8
 #define WHILE 9
-#define REPEAT 11
-#define UNTIL 12
-#define USING 13
-#define IN 14
-
 
 #define ID 20
 #define INT 21
@@ -30,5 +25,10 @@
 #define GT 33
 #define ASSIGN 34
 #define SEMI 35
+
+#define REPEAT 40
+#define UNTIL 41
+#define USING 42
+#define IN 43
 
 #define MAXIDENT 256
